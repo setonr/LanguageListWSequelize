@@ -1,0 +1,52 @@
+<h1 id="masthead">My Language To-Study List</h1>
+
+<div class = "row">
+<div class = "col-sm-4 column1">
+<h2 class="headers">My List</h2>
+<br>
+<ul>
+  {{#each language}}
+    {{#unless this.studied}}
+    <li>
+      <p>
+        {{this.id}}. {{this.language}}
+
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <button class = "studiedBtn" type="submit">Studied it!</button>
+        </form>
+      </p>
+    </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+<br>
+
+</div>
+
+<div class="col-sm-4 column2">
+<h2 class="headers">Add a Language</h2>
+<br>
+<form class="formInput" method="POST" action="/" class="button-size">
+  <textarea type="text" name="language"></textarea>
+  <br>
+  <button class="submit" type="submit">Save</button>
+</form>
+</div>
+
+<div class="col-sm-4 column3">
+
+<h2 class="headers">Languages I've Studied</h2>
+<br>
+<ul>
+  {{#each language}}
+    {{#if this.studied}}
+    <li>
+      <p>
+        {{this.id}}. {{this.language}}
+      </p>
+    </li>
+    {{/if}}
+  {{/each}}
+</ul>
+</div>
+</div>
