@@ -1,27 +1,26 @@
-var orm = require("../config/orm.js");
+var Sequelize = require("sequelize");
+
+var sequelize = require("../config/connection.js");
 
 //create code that will call the ORM functions using burger-specific input for the ORM.
-var language = {
-	all: function(cb) {
-		orm.selectAll("languages", function(res) {
-			cb(res);
-		});
+var Language = sequelize.define("langauge", {
+	language: {
+		type: Sequelize.STRING,
+		allowNull: false
 	},
-	create: function(cols, vals, cb) {
-		orm.insertOne("languages", cols, vals, function(res) {
-			cb(res);
-		});
+	studied: {
+		type: Sequelize.BOOLEAN
+		allowNull: false,
+		defaultValue: false
 	}, 
-	study: function(objColVals, condition, cb) {
-		orm.updateOne("languages", objColVals, condition, function(res) {
-			cb(res);
-		});
-	},
-	delete: function(condition, cb) {
-		orm.delete("languages", condition, function(res) {
-			cb(res);
-		});
-	}	
-};
+	createdAt: {
+		type: Sequelize.DATE
+		allowNull: false
+	}
+}, {
+	timestamps: false
+});
 
-module.exports = language;
+Language.sync();
+
+module.exports = Language;

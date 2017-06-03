@@ -5,11 +5,11 @@
 <h2 class="headers">My List</h2>
 <br>
 <ul>
-  {{#each language}}
+  {{#each languages}}
     {{#unless this.studied}}
     <li>
       <p>
-        {{this.id}}. {{this.language}}
+        {{this.id}}. {{this.languages}}
 
         <form action="/{{this.id}}?_method=PUT" method="POST">
           <button class = "studiedBtn" type="submit">Studied it!</button>
@@ -27,7 +27,7 @@
 <h2 class="headers">Add a Language</h2>
 <br>
 <form class="formInput" method="POST" action="/" class="button-size">
-  <textarea type="text" name="language"></textarea>
+  <textarea type="text" name="languages"></textarea>
   <br>
   <button class="submit" type="submit">Save</button>
 </form>
@@ -38,11 +38,11 @@
 <h2 class="headers">Languages I've Studied</h2>
 <br>
 <ul>
-  {{#each language}}
+  {{#each languages}}
     {{#if this.studied}}
     <li>
       <p>
-        {{this.id}}. {{this.language}}
+        {{this.id}}. {{this.languages}}
       </p>
     </li>
     {{/if}}
