@@ -15,6 +15,9 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 	
+	Language.sync();
+	
 	return Language;
+
 };
 
