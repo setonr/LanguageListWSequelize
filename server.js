@@ -4,20 +4,15 @@ var methodOverride = require("method-override");
 var path = require("path");
 var db = require("./models");
 var exphbs = require("express-handlebars");
-
-
 var app = express();
 var PORT = process.env.PORT || 3000;
+var routes = require("./controllers/languages_controller.js");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride("_method"));
-
-
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-
-var routes = require("./controllers/languages_controller.js")(app);
 
 app.use("/", routes);
 app.use("/update", routes);
