@@ -17,7 +17,12 @@ app.use(methodOverride("_method"));
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-require("./controllers/languages_controller.js")(app);
+var routes = require("./controllers/languages_controller.js")(app);
+
+app.use("/", routes);
+app.use("/update", routes);
+app.use("/create", routes);
+
 
 db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
