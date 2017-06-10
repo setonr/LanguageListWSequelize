@@ -1,10 +1,10 @@
 var express = require("express"); 
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
-var path = require("path");
 var db = require("./models");
-var exphbs = require("express-handlebars");
 var app = express();
+var path = require("path");
+var exphbs = require("express-handlebars");
 var PORT = process.env.PORT || 3000;
 var routes = require("./controllers/languages_controller.js");
 
